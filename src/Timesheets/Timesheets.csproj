@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\EmployeeDetail\**" />
+    <Compile Remove="Views\Project\**" />
+    <Compile Remove="Views\Sprint\**" />
+    <Compile Remove="Views\Task\**" />
+    <EmbeddedResource Remove="Views\EmployeeDetail\**" />
+    <EmbeddedResource Remove="Views\Project\**" />
+    <EmbeddedResource Remove="Views\Sprint\**" />
+    <EmbeddedResource Remove="Views\Task\**" />
+    <None Remove="Views\EmployeeDetail\**" />
+    <None Remove="Views\Project\**" />
+    <None Remove="Views\Sprint\**" />
+    <None Remove="Views\Task\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Barebone\Barebone.csproj" />
+    <ProjectReference Include="..\src\Employees.Data.Abstractions\Employees.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Timesheets.Data.Abstractions\Timesheets.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Timesheets.Data.EntityFramework.SqlServer\Timesheets.Data.EntityFramework.SqlServer.csproj" />
+  </ItemGroup>
+
+</Project>
