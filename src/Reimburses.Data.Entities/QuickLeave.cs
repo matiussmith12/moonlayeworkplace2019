@@ -20,18 +20,17 @@ namespace Reimburses.Data.Entities
 
         // Entity Relational
 
-        public int DepartmentId { get; set; }
-        public int GroupId { get; set; }
+
         public int EmployeeId { get; set; }
+
+        public Employee Employee { get; set; }
+        
 
         public bool IsDeleted { get; set; }
         public DateTimeOffset? Deleted { get; set; }
         public string DeleteBy { get; set; }
 
-        public void GetTotalTimeTaken()
-        {
-            TotalOvertime = (FinishTime - StartTime).Hours;
-        }
+       
 
 
 

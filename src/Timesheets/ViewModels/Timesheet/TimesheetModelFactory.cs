@@ -27,9 +27,9 @@ namespace Timesheets.ViewModels.Timesheet
                         join x in selectedEmployees on o.EmployeeId equals x.Id
                         select new TimesheetDto(o, x)).ToList();
 
-            var yesterday = from n in timesheetList
-                    group n by n.TimesheetDate into g
-                    select g.OrderByDescending(t => t.TimesheetDate).FirstOrDefault();
+            //var yesterday = from n in timesheetList
+            //        group n by n.TimesheetDate into g
+            //        select g.OrderByDescending(t => t.TimesheetDate).FirstOrDefault();
 
             return new TimesheetIndexViewModel(data);
         }

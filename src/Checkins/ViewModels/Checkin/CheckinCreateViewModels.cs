@@ -8,7 +8,7 @@ namespace Checkins.ViewModels.Checkin
 {
     public class CheckinCreateViewModels
     {
-
+       
         public string Location { get; set; }
         public int EmployeeId { get; set; }
         public IFormFile Image { get; set; }

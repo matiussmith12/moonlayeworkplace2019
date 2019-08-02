@@ -16,6 +16,8 @@ namespace Leaves.Data.Entities
         public DateTimeOffset ApprovalDate { get; set; }
         public ApprovalStatus ApprovalStatus { get; set; }
 
+        public int LeaveId { get; set; }
+
         public virtual Leave Leave { get; set; }
     }
 }

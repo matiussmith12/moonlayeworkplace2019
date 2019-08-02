@@ -18,7 +18,7 @@ namespace Reimburses.Data.Entities
         //Entity to  RequestBusinessTrip
         public int EmployeeId { get; set; }
 
-
+        public Employee Employee { get; set; }
         
 
         public bool IsDeleted { get; set; }

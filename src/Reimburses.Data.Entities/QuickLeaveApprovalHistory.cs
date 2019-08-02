@@ -18,7 +18,7 @@ namespace Reimburses.Data.Entities
         public DateTimeOffset ApprovalDate { get; set; }
         public ApprovalStatusQuickLeave ApprovalStatusQuickLeave { get; set; }
 
-        public int QuickLeaveId { get;set }
+        public int QuickLeaveId { get; set; }
         public virtual QuickLeave QuickLeave { get; set; }
     }
 }

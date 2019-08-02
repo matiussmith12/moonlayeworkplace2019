@@ -15,7 +15,7 @@ namespace Reimburses.Data.Entities
 
         //Employee to RequestMedical
         public int EmployeeId { get; set; }
-
+        public Employee Employee { get; set; }
 
 
         public bool IsDeleted { get; set; }

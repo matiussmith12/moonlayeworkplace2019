@@ -27,8 +27,8 @@ namespace Reimburses.ViewModels.QuickLeave
             entity.FinishTime = this.FinishTime;
             entity.TotalOvertime = this.TotalOvertime;
             entity.Purpose = this.Purpose;
-            entity.DepartmentId = this.DepartmentId;
-            entity.GroupId = this.GroupId;
+           // entity.DepartmentId = this.DepartmentId;
+          //  entity.GroupId = this.GroupId;
             entity.Note = this.Note;
             entity.ProjectName = this.ProjectName;
             entity.RequestTo = this.RequestTo;

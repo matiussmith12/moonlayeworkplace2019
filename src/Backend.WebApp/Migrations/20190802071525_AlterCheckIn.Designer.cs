@@ -4,14 +4,16 @@ using ExtCore.Data.EntityFramework.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Backend.WebApp.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    partial class StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20190802071525_AlterCheckIn")]
+    partial class AlterCheckIn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -551,8 +553,6 @@ namespace Backend.WebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
                     b.ToTable("Leaves");
                 });
 
@@ -574,7 +574,7 @@ namespace Backend.WebApp.Migrations
 
                     b.Property<int>("EmployeeId");
 
-                    b.Property<int>("LeaveId");
+                    b.Property<int?>("LeaveId");
 
                     b.Property<DateTimeOffset?>("Modified");
 
@@ -719,8 +719,6 @@ namespace Backend.WebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
                     b.ToTable("RequestBusinesstrips");
                 });
 
@@ -794,8 +792,6 @@ namespace Backend.WebApp.Migrations
                     b.Property<double>("TotalCostReimburse");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("RequestMedicals");
                 });
@@ -886,8 +882,6 @@ namespace Backend.WebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
                     b.ToTable("RequestOvertimes");
                 });
 
@@ -945,8 +939,6 @@ namespace Backend.WebApp.Migrations
                     b.Property<int>("ProjectId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("ProjectId");
 
@@ -1151,20 +1143,11 @@ namespace Backend.WebApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Leaves.Data.Entities.Leave", b =>
-                {
-                    b.HasOne("Employees.Data.Entities.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Leaves.Data.Entities.LeaveApprovalHistory", b =>
                 {
                     b.HasOne("Leaves.Data.Entities.Leave", "Leave")
                         .WithMany("ApprovalHistory")
-                        .HasForeignKey("LeaveId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LeaveId");
                 });
 
             modelBuilder.Entity("Reimburses.Data.Entities.QuickLeave", b =>
@@ -1183,14 +1166,6 @@ namespace Backend.WebApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Reimburses.Data.Entities.RequestBusinesstrip", b =>
-                {
-                    b.HasOne("Employees.Data.Entities.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Reimburses.Data.Entities.RequestBusinesstripApprovalHistory", b =>
                 {
                     b.HasOne("Reimburses.Data.Entities.RequestBusinesstrip", "RequestBusinesstrip")
@@ -1199,27 +1174,11 @@ namespace Backend.WebApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Reimburses.Data.Entities.RequestMedical", b =>
-                {
-                    b.HasOne("Employees.Data.Entities.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Reimburses.Data.Entities.RequestMedicalApprovalHistory", b =>
                 {
                     b.HasOne("Reimburses.Data.Entities.RequestMedical", "RequestMedical")
                         .WithMany("ApprovalHistory")
                         .HasForeignKey("RequestMedicalId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Reimburses.Data.Entities.RequestOvertime", b =>
-                {
-                    b.HasOne("Employees.Data.Entities.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1233,11 +1192,6 @@ namespace Backend.WebApp.Migrations
 
             modelBuilder.Entity("Timesheets.Data.Entities.EmployeeDetail", b =>
                 {
-                    b.HasOne("Employees.Data.Entities.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Timesheets.Data.Entities.Project", "Project")
                         .WithMany("EmployeeDetails")
                         .HasForeignKey("ProjectId")

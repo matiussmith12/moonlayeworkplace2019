@@ -17,6 +17,8 @@ namespace Checkins.Data.Entities
         //Checkin to Employee
         public int EmployeeId { get; set; }
 
+        public Employee Employee { get; set; }
+
         public void VerifyLate(string lateTime)
         {
             var now = DateTime.Now;

@@ -23,7 +23,7 @@ namespace Reimburses.Data.Entities
         public int DepartmentId { get; set; }
         public int GroupId { get; set; }
         public int EmployeeId { get; set; }
-
+        public Employee Employee { get; set; }
 
 
         public bool IsDeleted { get; set; }

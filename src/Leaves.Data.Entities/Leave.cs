@@ -25,6 +25,8 @@ namespace Leaves.Data.Entities
 
         public int EmployeeId { get; set; }
 
+        public Employee Employee { get; set; }
+
         public virtual ICollection<LeaveApprovalHistory> ApprovalHistory { get; set; }
 
         public bool HumanResourceDeptApproved(int hrStaffEmployeeId, string currentUsername)
