@@ -8,14 +8,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Employees.Data.Abstractions;
 
 namespace Reimburses.Controllers.Api
 {
     //[Authorize]
     [Route("api/quickleaves")]
-    public class QuickLeavesController : ControllerBaseApi
+    public class QuickLeaveController : ControllerBaseApi
     {
-        public QuickLeavesController(IStorage storage) : base(storage)
+        public QuickLeaveController(IStorage storage) : base(storage)
         {
             //constructor
         }
@@ -40,7 +41,7 @@ namespace Reimburses.Controllers.Api
         {
             if (this.ModelState.IsValid)
             {
-                QuickLeave quickLeave = model.ToEntity();
+                QuickLeave quickLeave = model.ToQuickLeaveEntity();
                 quickLeave.GetTotalTimeTaken();
                 var repo = this.Storage.GetRepository<IQuickLeaveRepository>();
 
@@ -178,10 +179,10 @@ namespace Reimburses.Controllers.Api
             var quickLeave = quickLeaveRepository.WithKey(id);
 
             var groupRepository = this.Storage.GetRepository<IGroupRepository>();
-            var group = groupRepository.WithKey(quickLeave.groupId);
+            var group = groupRepository.WithKey(quickLeave.GroupId);
 
             var departmentRepository = this.Storage.GetRepository<IDepartmentRepository>();
-            var department = departmentRepository.WithKey(quickLeave.departmentId);
+            var department = departmentRepository.WithKey(quickLeave.DepartmentId);
 
             var result = new QuickLeaveDto(quickLeave)
             {

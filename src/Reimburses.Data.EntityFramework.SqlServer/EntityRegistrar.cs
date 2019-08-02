@@ -15,17 +15,10 @@ namespace Reimburses.Data.EntityFramework.SqlServer
                 etb.ToTable("RequestOvertimes");
                 etb.HasKey(e => e.Id);
 
-                etb.Property(p => p.overtimeType).HasMaxLength(64).IsRequired();
-                //etb.Property(p => p.dateOvertime).HasMaxLength(25).IsRequired();
-                //etb.Property(p => p.startTime).HasMaxLength(25).IsRequired();
-                //etb.Property(p => p.finishTime).HasMaxLength(25).IsRequired();
-                ////etb.Property(p => p.totalOvertime).HasMaxLength(25).IsRequired();
-                //etb.Property(p => p.departementOrGroup).HasMaxLength(64).IsRequired();
-                etb.Property(p => p.projectName).HasMaxLength(64).IsRequired();
-                etb.Property(p => p.requestTo).HasMaxLength(25).IsRequired();
-                //etb.Property(p => p.transportReimbursement).HasMaxLength(10).IsRequired();
-                //etb.Property(p => p.mealReimbursement).HasMaxLength(10).IsRequired();
-                                               
+                etb.Property(p => p.OvertimeType);
+                etb.Property(p => p.ProjectName).HasMaxLength(128).IsRequired();
+                etb.Property(p => p.RequestTo).HasMaxLength(64);
+                               
                 etb.Property(e => e.Id).ValueGeneratedOnAdd();              
             });
 
@@ -33,10 +26,7 @@ namespace Reimburses.Data.EntityFramework.SqlServer
                 etb.ToTable("RequestMedicals");
                 etb.HasKey(e => e.Id);
 
-                //etb.Property(p => p.dateRequestMedical).HasMaxLength(25).IsRequired();
-                etb.Property(p => p.medicationType).HasMaxLength(64).IsRequired();
-                //etb.Property(p => p.totalCostNominal).HasMaxLength(10).IsRequired();
-                //etb.Property(p => p.totalCostReimburse).HasMaxLength(10).IsRequired();
+                etb.Property(p => p.MedicationType).HasMaxLength(64).IsRequired();
   
                 etb.Property(e => e.Id).ValueGeneratedOnAdd();
             });
@@ -44,27 +34,21 @@ namespace Reimburses.Data.EntityFramework.SqlServer
             modelbuilder.Entity<RequestBusinesstrip>(etb => {
                 etb.ToTable("RequestBusinesstrips");
                 etb.HasKey(e => e.Id);
-                //etb.Property(p => p.dateBusinessTrip).HasMaxLength(25).IsRequired();
-                etb.Property(p => p.from).HasMaxLength(64).IsRequired();
-                etb.Property(p => p.to).HasMaxLength(64).IsRequired();
-                //etb.Property(p => p.totalCostNominal).HasMaxLength(10).IsRequired();
-                //etb.Property(p => p.totalCostReimburse).HasMaxLength(10).IsRequired();
-              
+
+                etb.Property(p => p.From).HasMaxLength(128).IsRequired();
+                etb.Property(p => p.To).HasMaxLength(128).IsRequired();
+            
                 etb.Property(e => e.Id).ValueGeneratedOnAdd();
             });
+
             modelbuilder.Entity<QuickLeave>(etb => {
                 etb.ToTable("QuickLeaves");
                 etb.HasKey(e => e.Id);
 
-                //etb.Property(p => p.Date).HasMaxLength(20).IsRequired();
-                //etb.Property(p => p.StartTime).HasMaxLength(20).IsRequired();
-                //etb.Property(p => p.FinishTime).HasMaxLength(25).IsRequired();
-                //etb.Property(p => p.TotalOvertime).HasMaxLength(25).IsRequired();
-                etb.Property(p => p.purpose).HasMaxLength(64).IsRequired();
-               // etb.Property(p => p.departmentId).HasMaxLength(64).IsRequired();
-                etb.Property(p => p.projectName).HasMaxLength(64).IsRequired();
-                etb.Property(p => p.requestTo).HasMaxLength(64).IsRequired();
-                etb.Property(p => p.note).HasMaxLength(64).IsRequired();
+                etb.Property(p => p.Purpose).HasMaxLength(64).IsRequired();
+                etb.Property(p => p.ProjectName).HasMaxLength(128).IsRequired();
+                etb.Property(p => p.RequestTo).HasMaxLength(64).IsRequired();
+                etb.Property(p => p.Note).HasMaxLength(128).IsRequired();
 
                 etb.Property(e => e.Id).ValueGeneratedOnAdd();
             });

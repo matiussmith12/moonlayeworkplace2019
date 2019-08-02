@@ -15,10 +15,10 @@ namespace Reimburses.Controllers.Api
 {
     //[Authorize]
     [Route("api/requestbusinesstrips")]
-    public class RequestBusinesstripsController : Barebone.Controllers.ControllerBase
+    public class RequestBusinesstripController : Barebone.Controllers.ControllerBase
     {
         private readonly IImageService _imageService;
-        public RequestBusinesstripsController(IStorage storage, IImageService imageService) : base(storage)
+        public RequestBusinesstripController(IStorage storage, IImageService imageService) : base(storage)
         {
             _imageService = imageService;
         }
@@ -43,7 +43,7 @@ namespace Reimburses.Controllers.Api
         {
             if (this.ModelState.IsValid)
             {
-                RequestBusinesstrip requestBusinesstrip = model.ToEntity();
+                RequestBusinesstrip requestBusinesstrip = model.ToRequestBusinessTripEntity();
                 var repo = this.Storage.GetRepository<IRequestBusinesstripRepository>();
 
                 var imageUrl = await _imageService.UploadImageAsync(model.Image);
@@ -156,7 +156,7 @@ namespace Reimburses.Controllers.Api
 
             if (this.ModelState.IsValid)
             {
-                model.ToEntity(requestBusinesstrip, this.GetCurrentUserName());
+                model.ToBusinessTripEntity(requestBusinesstrip, this.GetCurrentUserName());
                 repo.Edit(requestBusinesstrip, GetCurrentUserName());
                 this.Storage.Save();
 

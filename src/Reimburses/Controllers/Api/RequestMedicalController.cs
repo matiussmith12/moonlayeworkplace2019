@@ -15,10 +15,10 @@ namespace Reimburses.Controllers.Api
 {
     //[Authorize]
     [Route("api/requestmedicals")]
-    public class RequestMedicalsController : Barebone.Controllers.ControllerBase
+    public class RequestMedicalController : Barebone.Controllers.ControllerBase
     {
         private readonly IImageService _imageService;
-        public RequestMedicalsController(IStorage storage, IImageService imageService) : base(storage)
+        public RequestMedicalController(IStorage storage, IImageService imageService) : base(storage)
         {
             _imageService = imageService;
         }
@@ -44,7 +44,7 @@ namespace Reimburses.Controllers.Api
         {
             if (this.ModelState.IsValid)
             {
-                RequestMedical requestMedical = model.ToEntity();
+                RequestMedical requestMedical = model.ToRequestMedicalEntity();
 
                 requestMedical.GetTotalReimburseTaken();
                 var repo = this.Storage.GetRepository<IRequestMedicalRepository>();
@@ -163,7 +163,7 @@ namespace Reimburses.Controllers.Api
 
             if (this.ModelState.IsValid)
             {
-                model.ToEntity(requestMedical, this.GetCurrentUserName());
+                model.ToRequestMedicalEntity(requestMedical, this.GetCurrentUserName());
                 repo.Edit(requestMedical, GetCurrentUserName());
                 this.Storage.Save();
 

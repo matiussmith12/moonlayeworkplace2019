@@ -20,9 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Barebone\Barebone.csproj" />
-    <ProjectReference Include="..\src\Employees.Data.Abstractions\Employees.Data.Abstractions.csproj" />
-    <ProjectReference Include="..\src\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Barebone\Barebone.csproj" />
+    <ProjectReference Include="..\Employees.Data.Abstractions\Employees.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Timesheets.Data.Abstractions\Timesheets.Data.Abstractions.csproj" />
     <ProjectReference Include="..\Timesheets.Data.EntityFramework.SqlServer\Timesheets.Data.EntityFramework.SqlServer.csproj" />
   </ItemGroup>

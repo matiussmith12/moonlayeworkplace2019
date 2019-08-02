@@ -19,7 +19,9 @@ namespace Employees.ViewModels.WorkPlacement
         {
             var workRepo = storage.GetRepository<IWorkPlacementRepository>();
 
-            return new WorkPlacementIndexViewModel(workRepo.All(page, size));
+            var queryWork = workRepo.Query;
+
+            return new WorkPlacementIndexViewModel(workRepo.All(queryWork,page, size));
         }
     }
 }

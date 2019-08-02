@@ -18,7 +18,9 @@ namespace Employees.ViewModels.Religion
         {
             var religionRepo = storage.GetRepository<IReligionRepository>();
 
-            return new ReligionIndexViewModel(religionRepo.All(page, size));
+            var queryReligion = religionRepo.Query;
+
+            return new ReligionIndexViewModel(religionRepo.All(queryReligion, page, size));
         }
     }
 }

@@ -7,18 +7,18 @@ namespace Reimburses.ViewModels.RequestMedical
     public class RequestMedicalUpdateViewModel
     {
         public RequestMedicalUpdateViewModel() { }
-        private readonly Data.Entities.RequestMedical _entity;
-        public DateTimeOffset dateRequestMedical { get; set; }
-        public string medicationType { get; set; }
-        public int totalCostNominal { get; set; }
-        public int totalCostReimburse { get; set; }
+    //    private readonly Data.Entities.RequestMedical _entity;
+        public DateTimeOffset DateRequestMedical { get; set; }
+        public string MedicationType { get; set; }
+        public int TotalCostNominal { get; set; }
+        public int TotalCostReimburse { get; set; }
         public IFormFile Image { get; set; }
-        internal Data.Entities.RequestMedical ToEntity(Data.Entities.RequestMedical entity, string username)
+        internal Data.Entities.RequestMedical ToRequestMedicalEntity(Data.Entities.RequestMedical entity, string username)
         {
-            entity.dateRequestMedical = this.dateRequestMedical;
-            entity.medicationType = this.medicationType;
-            entity.totalCostNominal = this.totalCostNominal;
-            entity.totalCostReimburse = this.totalCostReimburse;
+            entity.DateRequestMedical = this.DateRequestMedical;
+            entity.MedicationType = this.MedicationType;
+            entity.TotalCostNominal = this.TotalCostNominal;
+            entity.TotalCostReimburse = this.TotalCostReimburse;
             entity.Modified = DateTime.Now;
             entity.ModifiedBy = username;
 

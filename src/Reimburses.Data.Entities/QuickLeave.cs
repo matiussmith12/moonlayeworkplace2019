@@ -5,41 +5,35 @@ using System.Collections.Generic;
 
 namespace Reimburses.Data.Entities
 {
-    public class QuickLeave : Entity
+    public class QuickLeave : Entity, ISoftDelete
     {
-        public DateTimeOffset date { get; set; }
-        public DateTime startTime { get; set; }
-        public DateTime finishTime { get; set; }
-        public int totalOvertime { get; set; }
-        public string purpose { get; set; }
-        public string projectName { get; set; }
-        public string requestTo { get; set; }
-      //  public int departmentId { get; set; }
-   //     public int groupId { get; set; }
-        public string note { get; set; }
-     //   public Department Department { get; set; }
-      //  public Group Group { get; set; }
-        public int EmployeId { get; set; }
+        public DateTimeOffset Date { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        public int TotalOvertime { get; set; }
+        public string Purpose { get; set; }
+        public string ProjectName { get; set; }
+        public string RequestTo { get; set; }
+        public string Note { get; set; }
+        
 
-        //public string Department { get; set; }        
-        //public virtual Employee Employee { get; set; }
 
-        //Count Time
-        //public TimeSpan GetTotalTimeTaken(DateTime startTime, DateTime finishTime)
-        //{
-        //    TimeSpan startH = TimeSpan.FromHours(startTime.Hour);
-        //    TimeSpan finishH = TimeSpan.FromHours(finishTime.Hour);
-        //    TimeSpan totalOvertime = finishH.Subtract(startH);
-        //    return totalOvertime;
-        //}
+        // Entity Relational
+
+        public int DepartmentId { get; set; }
+        public int GroupId { get; set; }
+        public int EmployeeId { get; set; }
+
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? Deleted { get; set; }
+        public string DeleteBy { get; set; }
 
         public void GetTotalTimeTaken()
         {
-            totalOvertime = (finishTime - startTime).Hours;
+            TotalOvertime = (FinishTime - StartTime).Hours;
         }
 
 
-        //approval
 
         public virtual ICollection<QuickLeaveApprovalHistory> ApprovalHistory { get; set; }
 

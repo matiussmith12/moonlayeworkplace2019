@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Data.Entities\Data.Entities.csproj" />
-    <ProjectReference Include="..\src\Employees.Data.Entities\Employees.Data.Entities.csproj" />
+    <ProjectReference Include="..\Data.Entities\Data.Entities.csproj" />
+    <ProjectReference Include="..\Employees.Data.Entities\Employees.Data.Entities.csproj" />
   </ItemGroup>
 
 </Project>

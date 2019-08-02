@@ -45,6 +45,8 @@ namespace Employees.Data.EntityFramework.SqlServer
                 etb.Property(e => e.NoSurat).HasMaxLength(128).IsRequired();
                 etb.Property(e => e.ImageUrl);
 
+                
+
                 etb.HasQueryFilter(m => m.IsDeleted == false);
             });
 

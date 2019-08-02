@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Employees.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,13 @@ namespace Checkins.Data.Entities
 {
     public class Checkin : Entity
     {
-        //public Checkin()
-        //{
-        //    //this.Time = DateTimeOffset.Now;
-        //}
-
-        //public DateTimeOffset Time { get; set; }
         public string Location { get; set; }
-        //public string Remark { get; set; }
-        //public IFormFile Image { get; set; }
         public string ImageUrl { get; set; }
         public bool IsLate { get; set; }
+        
+
+        //Checkin to Employee
+        public int EmployeeId { get; set; }
 
         public void VerifyLate(string lateTime)
         {

@@ -31,7 +31,7 @@ namespace Reimburses.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                QuickLeave quickLeave = model.ToEntity();
+                QuickLeave quickLeave = model.ToQuickLeaveEntity();
                 this.Storage.GetRepository<IQuickLeaveRepository>().Create(quickLeave, this.GetCurrentUserName());
                 this.Storage.Save();
 

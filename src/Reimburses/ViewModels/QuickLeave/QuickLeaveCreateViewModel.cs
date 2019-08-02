@@ -6,31 +6,37 @@ namespace Reimburses.ViewModels.QuickLeave
 {
     public class QuickLeaveCreateViewModel
     {
-        public DateTimeOffset date { get; set; }
-        public DateTime startTime { get; set; }
-        public DateTime finishTime { get; set; }
-        public int totalOvertime { get; set; }
-        public string purpose { get; set; }
-        //public string Department { get; set; }
-        public string projectName { get; set; }
-        public string requestTo { get; set; }
-        public int departmentId { get; set; }
-        public int groupId { get; set; }
-        public string note { get; set; }
-        internal Data.Entities.QuickLeave ToEntity()
+        public DateTimeOffset Date { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        public int TotalOvertime { get; set; }
+        public string Purpose { get; set; }
+        public string ProjectName { get; set; }
+        public string RequestTo { get; set; }
+        public string Note { get; set; }
+
+        public int DepartmentId { get; set; }
+        public int GroupId { get; set; }
+        public int QuickLeaveId { get; set; }
+
+
+        internal Data.Entities.QuickLeave ToQuickLeaveEntity()
         {
             return new Data.Entities.QuickLeave
             {
-                date = this.date,
-                startTime = this.startTime,
-                finishTime = this.finishTime,
-                totalOvertime = this.totalOvertime,
-                purpose = this.purpose,               
-                projectName = this.projectName,
-                requestTo = this.requestTo,
-                departmentId = this.departmentId,
-                groupId = this.groupId,
-                note = this.note
+                Date = this.Date,
+                StartTime = this.StartTime,
+                FinishTime = this.FinishTime,
+                TotalOvertime = this.TotalOvertime,
+                Purpose = this.Purpose,
+                ProjectName = this.ProjectName,
+                RequestTo = this.RequestTo,
+
+                DepartmentId = this.DepartmentId,
+                GroupId = this.GroupId,
+                
+
+                Note = this.Note
             };
         }
     }

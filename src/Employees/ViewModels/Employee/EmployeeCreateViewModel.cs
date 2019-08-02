@@ -10,9 +10,10 @@ namespace Employees.ViewModels.Employee
         [Display(Name = "First Name")]
         [Required()]
         public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string LastName { get; set; }
+
 
         //Personal Data 
         public string KTPAddress { get; set; }
@@ -25,7 +26,6 @@ namespace Employees.ViewModels.Employee
         public string EmergencyContactNumber { get; set; }
         public string EmergencyContactRelationship { get; set; }
         public string BirthLocation { get; set; }
-        public string LastEducation { get; set; }
         public string PersonalEmail { get; set; }
         public DateTimeOffset BirthDate { get; set; }
         public int IdentityCardNumber { get; set; }
@@ -62,11 +62,11 @@ namespace Employees.ViewModels.Employee
             return new Data.Entities.Employee
             {
                 FirstName = this.FirstName,
+                LastName = this.LastName,
+                InitialName = this.FirstName.Substring(0, 3).ToLower(),
                 Username = this.Username,
                 Password = this.Password,
                 FullName = this.FirstName +" "  +this.LastName,
-                InitialName = this.FirstName.Substring(0, 3).ToLower(),
-                LastName = this.LastName,
                 KTPAddress = this.KTPAddress,
                 CurrentAddress = this.CurrentAddress,
                 Gender = this.Gender,
@@ -77,7 +77,6 @@ namespace Employees.ViewModels.Employee
                 EmergencyContactNumber = this.EmergencyContactNumber,
                 EmergencyContactRelationship = this.EmergencyContactRelationship,
                 BirthLocation = this.BirthLocation,
-                LastEducation = this.LastEducation,
                 PersonalEmail = this.PersonalEmail,
                 OfficeEmail = this.FirstName.ToLower() + "." +this.LastName.ToLower() + "@moonlay.com",
                 BirthDate = this.BirthDate,

@@ -17,7 +17,9 @@ namespace Employees.ViewModels.Group
         {
             var groupRepo = storage.GetRepository<IGroupRepository>();
 
-            return new GroupIndexViewModel(groupRepo.All(page, size));
+            var queryGroup = groupRepo.Query;
+
+            return new GroupIndexViewModel(groupRepo.All(queryGroup, page, size));
         }
     }
 }

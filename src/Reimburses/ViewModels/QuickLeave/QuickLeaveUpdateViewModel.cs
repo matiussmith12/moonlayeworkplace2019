@@ -7,32 +7,31 @@ namespace Reimburses.ViewModels.QuickLeave
     {
         public QuickLeaveUpdateViewModel() { }
 
-        private readonly Data.Entities.QuickLeave _entity;
 
+        public DateTimeOffset Date { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        public int TotalOvertime { get; set; }
+        public string Purpose { get; set; }
+        public string ProjectName { get; set; }
+        public string RequestTo { get; set; }
+        public string Note { get; set; }
 
-        public DateTimeOffset date { get; set; }
-        public DateTime startTime { get; set; }
-        public DateTime finishTime { get; set; }
-        public int totalOvertime { get; set; }
-        public string purpose { get; set; }
-        public int departmentId { get; set; }
-        public int groupId { get; set; }
-        public string projectName { get; set; }
-        public string requestTo { get; set; }
-        public string note { get; set; }
+        public int DepartmentId { get; set; }
+        public int GroupId { get; set; }
 
         internal Data.Entities.QuickLeave ToEntity(Data.Entities.QuickLeave entity, string username)
         {
-            entity.date = this.date;
-            entity.startTime = this.startTime;
-            entity.finishTime = this.finishTime;
-            entity.totalOvertime = this.totalOvertime;
-            entity.purpose = this.purpose;
-            entity.departmentId = this.departmentId;
-            entity.groupId = this.groupId;
-            entity.note = this.note;
-            entity.projectName = this.projectName;
-            entity.requestTo = this.requestTo;
+            entity.Date = this.Date;
+            entity.StartTime = this.StartTime;
+            entity.FinishTime = this.FinishTime;
+            entity.TotalOvertime = this.TotalOvertime;
+            entity.Purpose = this.Purpose;
+            entity.DepartmentId = this.DepartmentId;
+            entity.GroupId = this.GroupId;
+            entity.Note = this.Note;
+            entity.ProjectName = this.ProjectName;
+            entity.RequestTo = this.RequestTo;
             entity.Modified = DateTime.Now;
             entity.ModifiedBy = username;
 

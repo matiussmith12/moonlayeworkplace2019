@@ -5,18 +5,26 @@ using System.Collections.Generic;
 
 namespace Reimburses.Data.Entities
 {
-    public class RequestBusinesstrip : Entity
+    public class RequestBusinesstrip : Entity, ISoftDelete
     {
-        public DateTimeOffset dateBusinessTrip { get; set; }
-        public string from { get; set; }
-        public string to { get; set; }
-        public int totalCostNominal { get; set; }
-        public int totalCostReimburse { get; set; }
+        public DateTimeOffset DateBusinessTrip { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
+        public double TotalCostNominal { get; set; }
+        public double TotalCostReimburse { get; set; }
         public string ImageUrl { get; set; }
-        public int EmployeeId { get; set; }
-        //public IFormFile Image { get; set; }
 
-        //approval
+
+        //Entity to  RequestBusinessTrip
+        public int EmployeeId { get; set; }
+
+
+        
+
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? Deleted { get; set; }
+        public string DeleteBy { get; set; }
+
         public virtual ICollection<RequestBusinesstripApprovalHistory> ApprovalHistory { get; set; }
 
         public bool HumanResourceDeptApproved(int hrStaffEmployeeId, string currentUsername)

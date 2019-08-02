@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Employees.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,13 +12,13 @@ namespace Reimburses.ViewModels.QuickLeave
         }
         public QuickLeaveDto(Data.Entities.QuickLeave quickLeave)
         {
-            DateRequest = quickLeave.date;
-            StartTime = quickLeave.startTime;
-            FinishTime = quickLeave.finishTime;
-            TotalOvertime = quickLeave.totalOvertime;
-            Purpose = quickLeave.purpose;
-            ProjectName = quickLeave.projectName;
-            RequestTo = quickLeave.requestTo;         
+            DateRequest = quickLeave.Date;
+            StartTime = quickLeave.StartTime;
+            FinishTime = quickLeave.FinishTime;
+            TotalOvertime = quickLeave.TotalOvertime;
+            Purpose = quickLeave.Purpose;
+            ProjectName = quickLeave.ProjectName;
+            RequestTo = quickLeave.RequestTo;         
     }
 
         public DateTimeOffset DateRequest { get; }
@@ -36,9 +37,9 @@ namespace Reimburses.ViewModels.QuickLeave
         public DepartmentDto()
         {
         }
-        public DepartmentDto(Data.Entities.Department department)
+        public DepartmentDto(Department department)
         {
-            departmentName = department.departmentName;
+            departmentName = department.DepartmentName;
         }
 
         public string departmentName { get; }
@@ -49,9 +50,9 @@ namespace Reimburses.ViewModels.QuickLeave
         public GroupDto()
         {
         }
-        public GroupDto(Data.Entities.Group group)
+        public GroupDto(Group group)
         {
-            groupName = group.groupName;
+            groupName = group.GroupName;
         }
         public string groupName { get; }
     }

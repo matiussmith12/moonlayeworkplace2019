@@ -6,7 +6,7 @@ namespace Leaves.Data.Entities
 {
     public  enum LeaveType
     {
-        Compliment_Leave,
+        Compliment_Leave = 1,
         Sick_Leave,
         Unpaid_Leave,
         AnnualType_Full,

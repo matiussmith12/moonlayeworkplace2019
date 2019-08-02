@@ -2,6 +2,7 @@
 using ExtCore.Data.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Data.Abstractions
 {
@@ -9,7 +10,9 @@ namespace Data.Abstractions
     {
         TEntity WithKey(int id);
 
-        IEnumerable<TEntity> All(int page = 0, int size = 25);
+        IEnumerable<TEntity> All(IQueryable<TEntity> query, int page = 0, int size = 25);
+
+        IQueryable<TEntity> Query { get; }
 
         void Create(TEntity entity, string username);
 

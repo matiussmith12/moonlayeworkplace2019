@@ -1,30 +1,39 @@
 ﻿using Data.Entities;
+using Employees.Data.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace Reimburses.Data.Entities
 {
-    public class RequestMedical : Entity
+    public class RequestMedical : Entity, ISoftDelete
     {
-        public DateTimeOffset dateRequestMedical { get; set; }
-        public string medicationType { get; set; }
-        public int totalCostNominal { get; set; }
-        public int totalCostReimburse { get; set; }
+        public DateTimeOffset DateRequestMedical { get; set; }
+        public string MedicationType { get; set; }
+        public Double TotalCostNominal { get; set; }
+        public Double TotalCostReimburse { get; set; }
         public string ImageUrl { get; set; }
+
+        //Employee to RequestMedical
         public int EmployeeId { get; set; }
-        
-        //public IFormFile Image { get; set; }
 
 
-        //total reimburse
-        public void GetTotalReimburseTaken()
+
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? Deleted { get; set; }
+        public string DeleteBy { get; set; }
+
+
+
+        public Double GetTotalReimburseTaken()
         {
-            totalCostReimburse = 8%100 * totalCostNominal;
+            return TotalCostReimburse = 0.8 * TotalCostNominal;
         }
 
         //approval
         public virtual ICollection<RequestMedicalApprovalHistory> ApprovalHistory { get; set; }
-        public bool HumanResourceDeptApproved(int hrStaffEmployeeId, string currentUsername)
+
+
+        public bool HumanResourceDeptApproved(int hrStaffEmployeeId, string CurrentUsername)
         {
             this.ApprovalHistory.Add(new RequestMedicalApprovalHistory
             {
@@ -33,11 +42,11 @@ namespace Reimburses.Data.Entities
                 RequestMedical = this,
                 EmployeeId = hrStaffEmployeeId,
                 Created = DateTime.Now,
-                CreatedBy = currentUsername
+                CreatedBy = CurrentUsername
             });
             return true;
         }
-        public bool HumanResourceDeptRejected(int hrStaffEmployeeId, string currentUsername)
+        public bool HumanResourceDeptRejected(int hrStaffEmployeeId, string CurrentUsername)
         {
             this.ApprovalHistory.Add(new RequestMedicalApprovalHistory
             {
@@ -46,12 +55,12 @@ namespace Reimburses.Data.Entities
                 RequestMedical = this,
                 EmployeeId = hrStaffEmployeeId,
                 Created = DateTime.Now,
-                CreatedBy = currentUsername
+                CreatedBy = CurrentUsername
             });
             return true;
         }
 
-        public bool ScrumMasterApproved(int scrumMasterEmployeeId, string currentUsername)
+        public bool ScrumMasterApproved(int scrumMasterEmployeeId, string CurrentUsername)
         {
             this.ApprovalHistory.Add(new RequestMedicalApprovalHistory
             {
@@ -60,12 +69,12 @@ namespace Reimburses.Data.Entities
                 RequestMedical = this,
                 EmployeeId = scrumMasterEmployeeId,
                 Created = DateTime.Now,
-                CreatedBy = currentUsername
+                CreatedBy = CurrentUsername
             });
             return true;
         }
 
-        public bool ScrumMasterRejected(int scrumMasterEmployeeId, string currentUsername)
+        public bool ScrumMasterRejected(int scrumMasterEmployeeId, string CurrentUsername)
         {
             this.ApprovalHistory.Add(new RequestMedicalApprovalHistory
             {
@@ -74,7 +83,7 @@ namespace Reimburses.Data.Entities
                 RequestMedical = this,
                 EmployeeId = scrumMasterEmployeeId,
                 Created = DateTime.Now,
-                CreatedBy = currentUsername
+                CreatedBy = CurrentUsername
             });
             return true;
         }
@@ -90,5 +99,5 @@ namespace Reimburses.Data.Entities
         RejectedbyHR
     }
 
-
+    
 }

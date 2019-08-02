@@ -10,10 +10,12 @@ namespace Data.EntityFramework.Sqlite
 {
     public abstract class Repository<TEntity> : RepositoryBase<TEntity>, IRepository<TEntity> where TEntity : Entity
     {
-        public virtual IEnumerable<TEntity> All(int page = 0, int size = 25)
+        public virtual IEnumerable<TEntity> All(IQueryable<TEntity> query, int page = 0, int size = 25)
         {
             return this.dbSet.OrderByDescending(e => e.Created).Skip(page * size).Take(size);
         }
+
+        public IQueryable<TEntity> Query => dbSet;
 
         public virtual void Create(TEntity entity, string username)
         {

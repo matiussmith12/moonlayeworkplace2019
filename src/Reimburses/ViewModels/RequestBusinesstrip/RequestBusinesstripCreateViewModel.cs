@@ -7,21 +7,21 @@ namespace Reimburses.ViewModels.RequestBusinesstrip
 {
     public class RequestBusinesstripCreateViewModel
     {
-        public DateTimeOffset dateBusinessTrip { get; set; }
-        public string from { get; set; }
-        public string to { get; set; }
-        public int totalCostNominal { get; set; }
-        public int totalCostReimburse { get; set; }
+        public DateTimeOffset DateBusinessTrip { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
+        public int TotalCostNominal { get; set; }
+        public int TotalCostReimburse { get; set; }
         public IFormFile Image { get; set; }
-        internal Data.Entities.RequestBusinesstrip ToEntity()
+        internal Data.Entities.RequestBusinesstrip ToRequestBusinessTripEntity()
         {
             return new Data.Entities.RequestBusinesstrip
             {
-                dateBusinessTrip = this.dateBusinessTrip,
-                from = this.from,
-                to = this.to,
-                totalCostNominal = this.totalCostNominal,
-                totalCostReimburse = this.totalCostReimburse,
+                DateBusinessTrip = this.DateBusinessTrip,
+                From = this.From,
+                To = this.To,
+                TotalCostNominal = this.TotalCostNominal,
+                TotalCostReimburse = this.TotalCostReimburse,
                 //Image = this.Image,
             };
         }

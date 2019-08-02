@@ -18,7 +18,9 @@ namespace Checkins.ViewModels.Checkin
         {
             var checkinRepo = storage.GetRepository<ICheckinRepository>();
 
-            return new CheckinIndexViewModel(checkinRepo.All(page, size).Select(o=> new CheckinDto(o)));
+            var queryCheckIn = checkinRepo.Query;
+
+            return new CheckinIndexViewModel(checkinRepo.All(queryCheckIn, page, size).Select(o=> new CheckinDto(o)));
         }
     }
 }

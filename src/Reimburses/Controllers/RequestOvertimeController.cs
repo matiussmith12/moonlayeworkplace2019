@@ -31,7 +31,7 @@ namespace Reimburses.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                RequestOvertime requestOvertime = model.ToEntity();
+                RequestOvertime requestOvertime = model.ToRequestOvertimeEntity();
                 this.Storage.GetRepository<IRequestOvertimeRepository>().Create(requestOvertime, this.GetCurrentUserName());
                 this.Storage.Save();
 

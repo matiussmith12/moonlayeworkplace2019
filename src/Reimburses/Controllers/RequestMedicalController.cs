@@ -31,7 +31,7 @@ namespace Reimburses.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                RequestMedical requestMedical = model.ToEntity();
+                RequestMedical requestMedical = model.ToRequestMedicalEntity();
                 this.Storage.GetRepository<IRequestMedicalRepository>().Create(requestMedical, this.GetCurrentUserName());
                 this.Storage.Save();
 

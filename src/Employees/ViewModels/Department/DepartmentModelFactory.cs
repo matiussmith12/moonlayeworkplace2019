@@ -16,7 +16,9 @@ namespace Employees.ViewModels.Department
         {
             var departmentRepo = storage.GetRepository<IDepartmentRepository>();
 
-            return new DepartmentIndexViewModel(departmentRepo.All(page, size));
+            var queryDepartment = departmentRepo.Query;
+
+            return new DepartmentIndexViewModel(departmentRepo.All(queryDepartment, page, size));
         }
     }
 }

@@ -17,7 +17,9 @@ namespace Employees.ViewModels.Education
         {
             var educationRepo = storage.GetRepository<IEducationRepository>();
 
-            return new EducationIndexViewModel(educationRepo.All(page, size));
+            var queryEducation = educationRepo.Query;
+
+            return new EducationIndexViewModel(educationRepo.All(queryEducation, page, size));
         }
     }
 }

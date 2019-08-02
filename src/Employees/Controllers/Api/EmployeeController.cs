@@ -16,12 +16,12 @@ namespace Employees.Controllers.Api
 {
    // [Authorize]
     [Route("api/employees")]
-    public class EmployeesController : Barebone.Controllers.ControllerBase
+    public class EmployeeController : Barebone.Controllers.ControllerBase
     {
         private readonly IImageService _imageService;
         private readonly IConfiguration _configuration;
 
-        public EmployeesController(IStorage storage, IImageService imageService, IConfiguration configuration) : base(storage)
+        public EmployeeController(IStorage storage, IImageService imageService, IConfiguration configuration) : base(storage)
         {
             _imageService = imageService;
             _configuration = configuration;
@@ -47,17 +47,25 @@ namespace Employees.Controllers.Api
         {
             if (this.ModelState.IsValid)
             {
-                Employee employee = model.ToEntity();
-                var repo = this.Storage.GetRepository<IEmployeeRepository>();
+                try
+                {
+                    Employee employee = model.ToEntity();
+                    var repo = this.Storage.GetRepository<IEmployeeRepository>();
 
-                //var imageUrl = await _imageService.UploadImageAsync(model.Image);
+                    //var imageUrl = await _imageService.UploadImageAsync(model.Image);
 
-                //employee.ImageUrl = imageUrl.ToString();
-                repo.Create(employee, GetCurrentUserName());
+                    //employee.ImageUrl = imageUrl.ToString();
+                    repo.Create(employee, GetCurrentUserName());
 
-                this.Storage.Save();
+                    this.Storage.Save();
 
-                return Ok(new { success = true, data = employee });
+                    return Ok(new { success = true, data = employee });
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+                
             }
 
             return BadRequest(new { success = false });

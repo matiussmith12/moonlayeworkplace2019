@@ -11,15 +11,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Barebone.Services;
 using System;
+using Employees.Data.Abstractions;
 
 namespace Reimburses.Controllers.Api
 {
     //[Authorize]
     [Route("api/requestovertimes")]
-    public class RequestOvertimesController : Barebone.Controllers.ControllerBase
+    public class RequestOvertimeController : Barebone.Controllers.ControllerBase
     {
         private readonly IImageService _imageService;
-        public RequestOvertimesController(IStorage storage, IImageService imageService) : base(storage)
+        public RequestOvertimeController(IStorage storage, IImageService imageService) : base(storage)
         {
             _imageService = imageService;
         }
@@ -44,7 +45,7 @@ namespace Reimburses.Controllers.Api
         {
             if (this.ModelState.IsValid)
             {
-                RequestOvertime requestOvertime = model.ToEntity();
+                RequestOvertime requestOvertime = model.ToRequestOvertimeEntity();
                 var repo = this.Storage.GetRepository<IRequestOvertimeRepository>();
 
                 var imageUrl = await _imageService.UploadImageAsync(model.Image);
@@ -159,7 +160,7 @@ namespace Reimburses.Controllers.Api
 
             if (this.ModelState.IsValid)
             {
-                model.ToEntity(requestOvertime, this.GetCurrentUserName());
+                model.ToRequestOvertimeEntity(requestOvertime, this.GetCurrentUserName());
                 repo.Edit(requestOvertime, GetCurrentUserName());
                 this.Storage.Save();
 
@@ -194,10 +195,10 @@ namespace Reimburses.Controllers.Api
 
 
             var groupRepository = this.Storage.GetRepository<IGroupRepository>();
-            var group = groupRepository.WithKey(requestOvertime.groupId);
+            var group = groupRepository.WithKey(requestOvertime.GroupId);
 
             var departmentRepository = this.Storage.GetRepository<IDepartmentRepository>();
-            var department = departmentRepository.WithKey(requestOvertime.departmentId);
+            var department = departmentRepository.WithKey(requestOvertime.DepartmentId);
 
 
             var result = new RequestOvertimeDto(requestOvertime)

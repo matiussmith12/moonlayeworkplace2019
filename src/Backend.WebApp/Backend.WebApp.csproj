@@ -14,6 +14,10 @@
     <Compile Remove="Migrations\20190729024822_AddingEntityRealtionship.Designer.cs" />
     <Compile Remove="Migrations\20190729071119_ImageTypeData.cs" />
     <Compile Remove="Migrations\20190729071119_ImageTypeData.Designer.cs" />
+    <Compile Remove="Migrations\20190802024811_EmployeeReimbursement.cs" />
+    <Compile Remove="Migrations\20190802024811_EmployeeReimbursement.Designer.cs" />
+    <Compile Remove="Migrations\20190802025119_EmployeeReimbursement.cs" />
+    <Compile Remove="Migrations\20190802025119_EmployeeReimbursement.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,8 +32,22 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Barebone\Barebone.csproj" />
+    <ProjectReference Include="..\Checkins.Data.Abstractions\Checkins.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Checkins.Data.EntityFramework.SqlServer\Checkins.Data.EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="..\Checkins\Checkins.csproj" />
+    <ProjectReference Include="..\Employees.Data.Abstractions\Employees.Data.Abstractions.csproj" />
     <ProjectReference Include="..\Employees.Data.EntityFramework.SqlServer\Employees.Data.EntityFramework.SqlServer.csproj" />
     <ProjectReference Include="..\Employees\Employees.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Leaves.Data.Abstraction\Leaves.Data.Abstraction.csproj" />
+    <ProjectReference Include="..\Leaves.Data.EntityFramework\Leaves.Data.EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="..\Leaves\Leaves.csproj" />
+    <ProjectReference Include="..\Reimburses.Data.Abstractions\Reimburses.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Reimburses.Data.EntityFramework.SqlServer\Reimburses.Data.EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="..\Reimburses\Reimburses.csproj" />
+    <ProjectReference Include="..\Timesheets.Data.Abstractions\Timesheets.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\Timesheets.Data.EntityFramework.SqlServer\Timesheets.Data.EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="..\Timesheets\Timesheets.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,22 +8,19 @@ namespace Checkins.ViewModels.Checkin
 {
     public class CheckinCreateViewModels
     {
-        //[Required()]
-        //public DateTimeOffset Time { get; set; }
-        public string Location { get; set; }
-        //public string Remark { get; set; }
 
+        public string Location { get; set; }
+        public int EmployeeId { get; set; }
         public IFormFile Image { get; set; }
 
-        //public Image
         internal Data.Entities.Checkin ToEntity()
         {
             return new Data.Entities.Checkin
             {
-                //Time = this.Time,
+
                 Location = this.Location,
-                //Remark = this.Remark,
-                //Image = this.Image,
+                EmployeeId = this.EmployeeId
+
             };
         }
     }

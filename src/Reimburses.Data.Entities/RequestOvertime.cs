@@ -5,29 +5,30 @@ using System.Collections.Generic;
 
 namespace Reimburses.Data.Entities
 {
-    public class RequestOvertime : Entity
+    public class RequestOvertime : Entity, ISoftDelete
     {
-        public OvertimeType overtimeType { get; set; }
-        public DateTimeOffset dateOvertime { get; set; }
-        public DateTime startTime { get; set; }
-        public DateTime finishTime { get; set; }
-        public int totalOvertime { get; set; }
-      //  public int departmentId { get; set; }
-       // public int groupId { get; set; }
-        public string projectName { get; set; }
-        public string requestTo { get; set; }
-        public int transportReimbursement { get; set; }
-        public int mealReimbursement { get; set; }        
+        public OvertimeType OvertimeType { get; set; }
+        public DateTimeOffset DateOvertime { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        public int TotalOvertime { get; set; }
+
+        public string ProjectName { get; set; }
+        public string RequestTo { get; set; }
+        public int TransportReimbursement { get; set; }
+        public int MealReimbursement { get; set; }        
         public string ImageUrl { get; set; }
-      //  public Department Department { get; set; }
-      //  public Group Group { get; set; }
-       // public int EmployeeId { get; set; }
-        //public IFormFile Image { get; set; }
+
+        //Entity Relational
+        public int DepartmentId { get; set; }
+        public int GroupId { get; set; }
+        public int EmployeeId { get; set; }
 
 
 
-        
-        //approval
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? Deleted { get; set; }
+        public string DeleteBy { get; set; }
 
         public virtual ICollection<RequestOvertimeApprovalHistory> ApprovalHistory { get; set; }
 
@@ -104,7 +105,7 @@ namespace Reimburses.Data.Entities
 
     public enum OvertimeType
     {
-        Reimburse =1,
+        Reimburse = 1,
         Paid_Quickleave
     }
 

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Data.EntityFramework.SQLServer\Data.EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="..\Data.EntityFramework.SQLServer\Data.EntityFramework.SqlServer.csproj" />
     <ProjectReference Include="..\Timesheets.Data.Abstractions\Timesheets.Data.Abstractions.csproj" />
   </ItemGroup>
 

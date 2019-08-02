@@ -18,7 +18,9 @@ namespace Employees.ViewModels.GradingTitle
         {
             var gradingRepo = storage.GetRepository<IGradingTitleRepository>();
 
-            return new GradingTitleIndexViewModel(gradingRepo.All(page, size));
+            var queryGrading = gradingRepo.Query;
+
+            return new GradingTitleIndexViewModel(gradingRepo.All(queryGrading, page, size));
         }
     }
 }

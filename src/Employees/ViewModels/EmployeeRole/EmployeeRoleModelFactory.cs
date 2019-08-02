@@ -17,7 +17,9 @@ namespace Employees.ViewModels.EmployeeRole
         {
             var roleRepo = storage.GetRepository<IEmployeeRoleRepository>();
 
-            return new EmployeeRoleIndexViewModel(roleRepo.All(page, size));
+            var queryRole = roleRepo.Query;
+
+            return new EmployeeRoleIndexViewModel(roleRepo.All(queryRole,page, size));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Reimburses.Data.Entities;
+﻿using Employees.Data.Entities;
+using Reimburses.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,17 +14,17 @@ namespace Reimburses.ViewModels.RequestOvertime
         }
         public RequestOvertimeDto(Data.Entities.RequestOvertime requestOvertime)
         {
-            OvertimeType = requestOvertime.overtimeType;
-            DateOvertime = requestOvertime.dateOvertime;
-            StartTime = requestOvertime.startTime;
-            FinishTime = requestOvertime.finishTime;
-            TotalOvertime = requestOvertime.totalOvertime;
-            DepartmentId = requestOvertime.departmentId;
-            GroupId = requestOvertime.groupId;
-            ProjectName = requestOvertime.projectName;
-            RequestTo = requestOvertime.requestTo;
-            TransportReimbursement = requestOvertime.transportReimbursement;
-            MealReimbursement = requestOvertime.mealReimbursement;            
+            OvertimeType = requestOvertime.OvertimeType;
+            DateOvertime = requestOvertime.DateOvertime;
+            StartTime = requestOvertime.StartTime;
+            FinishTime = requestOvertime.FinishTime;
+            TotalOvertime = requestOvertime.TotalOvertime;
+            DepartmentId = requestOvertime.DepartmentId;
+            GroupId = requestOvertime.GroupId;
+            ProjectName = requestOvertime.ProjectName;
+            RequestTo = requestOvertime.RequestTo;
+            TransportReimbursement = requestOvertime.TransportReimbursement;
+            MealReimbursement = requestOvertime.MealReimbursement;            
         }
 
         public OvertimeType OvertimeType { get; }
@@ -47,12 +48,12 @@ namespace Reimburses.ViewModels.RequestOvertime
         {
         }
 
-        public GroupDto(Data.Entities.Group group)
+        public GroupDto(Group group)
         {
-            groupName = group.groupName;
+            GroupName = group.GroupName;
         }
 
-        public string groupName { get; }
+        public string GroupName { get; }
     }
     public class DepartmentDto
     {
@@ -60,11 +61,11 @@ namespace Reimburses.ViewModels.RequestOvertime
         {
         }
 
-        public DepartmentDto(Data.Entities.Department department)
+        public DepartmentDto(Department department)
         {
-            departmentName = department.departmentName;
+            DepartmentName = department.DepartmentName;
         }
-        public string departmentName { get; }
+        public string DepartmentName { get; }
     }
 
 }

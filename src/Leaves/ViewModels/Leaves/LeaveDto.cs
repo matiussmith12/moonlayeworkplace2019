@@ -25,10 +25,6 @@ namespace Leaves.ViewModels.Leave
             TotalLeaveTaken = leave.TotalLeaveTaken;
             JobOverTo = leave.JobOverTo;
             Project = leave.Project;
-
-
-
-
             Id = leave.Id;
            
 

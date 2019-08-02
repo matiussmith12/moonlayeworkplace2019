@@ -15,7 +15,9 @@ namespace Employees.ViewModels.BankAccount
         {
             var bankRepo = storage.GetRepository<IBankAccountRepository>();
 
-            return new BankAccountIndexViewModel(bankRepo.All(page, size));
+            var queryBank = bankRepo.Query;
+
+            return new BankAccountIndexViewModel(bankRepo.All(queryBank, page, size));
         }
     }
 }

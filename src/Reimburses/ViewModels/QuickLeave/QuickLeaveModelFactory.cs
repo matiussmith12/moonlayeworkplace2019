@@ -13,7 +13,9 @@ namespace Reimburses.ViewModels.QuickLeave
         {
             var quickLeaveRepo = storage.GetRepository<IQuickLeaveRepository>();
 
-            return new QuickLeaveIndexViewModel(quickLeaveRepo.All(page, size));
+            var queryQuickLeave = quickLeaveRepo.Query;
+
+            return new QuickLeaveIndexViewModel(quickLeaveRepo.All(queryQuickLeave, page, size));
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Reimburses.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                RequestBusinesstrip requestBusinesstrip = model.ToEntity();
+                RequestBusinesstrip requestBusinesstrip = model.ToRequestBusinessTripEntity();
                 this.Storage.GetRepository<IRequestBusinesstripRepository>().Create(requestBusinesstrip, this.GetCurrentUserName());
                 this.Storage.Save();
 

@@ -7,24 +7,24 @@ namespace Reimburses.ViewModels.RequestMedical
 {
     public class RequestMedicalCreateViewModel
     {
-        public DateTimeOffset dateRequestMedical { get; set; }
+        public DateTimeOffset DateRequestMedical { get; set; }
         [Display(Name = "Medication Type")]
         [Required()]
-        public string medicationType { get; set; }
+        public string MedicationType { get; set; }
         [Display(Name = "Total Cost")]
         [Required()]
-        public int totalCostNominal { get; set; }
-        public int totalCostReimburse { get; set; }
+        public int TotalCostNominal { get; set; }
+        public int TotalCostReimburse { get; set; }
         public IFormFile Image { get; set; }
 
-        internal Data.Entities.RequestMedical ToEntity()
+        internal Data.Entities.RequestMedical ToRequestMedicalEntity()
         {
             return new Data.Entities.RequestMedical
             {
-                dateRequestMedical = this.dateRequestMedical,
-                medicationType = this.medicationType,
-                totalCostNominal = this.totalCostNominal,
-                totalCostReimburse = this.totalCostReimburse,
+                DateRequestMedical = this.DateRequestMedical,
+                MedicationType = this.MedicationType,
+                TotalCostNominal = this.TotalCostNominal,
+                TotalCostReimburse = this.TotalCostReimburse,
                 //Image = this.Image,
             };
         }
